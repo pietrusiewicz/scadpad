@@ -1,0 +1,24 @@
+{
+  "name": "scadpad",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "OpenSCAD in the browser: live 3D preview, parameter panel, measurements and STL export. No backend.",
+  "license": "GPL-2.0-or-later",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview --port 4173",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "@loumalouomega/openscad-wasm": "^0.3.1",
+    "codemirror": "^5.65.21",
+    "three": "^0.187.0"
+  },
+  "devDependencies": {
+    "playwright": "^1.65.0",
+    "vite": "^8.3.7",
+    "vitest": "^5.1.0"
+  }
+}

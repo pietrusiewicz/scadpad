@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="pl">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>scadpad — edytor OpenSCAD w przeglądarce</title>
+    <meta
+      name="description"
+      content="Edytor OpenSCAD w przeglądarce: podgląd 3D, panel parametrów, pomiary w milimetrach i eksport STL. Bez instalacji i bez serwera."
+    />
+  </head>
+  <body>
+    <div class="app">
+      <header class="topbar">
+        <div class="brand">
+          <span class="logo" aria-hidden="true">◩</span>
+          <span class="name">scadpad</span>
+          <span class="tag">edytor OpenSCAD</span>
+        </div>
+
+        <div class="toolbar">
+          <label class="btn" for="file-input" title="Otwórz plik .scad z dysku">Otwórz .scad</label>
+          <input id="file-input" type="file" accept=".scad,.txt,text/plain" hidden />
+
+          <button id="render-btn" class="btn primary" type="button">
+            Renderuj <kbd>Ctrl</kbd><kbd>Enter</kbd>
+          </button>
+
+          <button id="export-btn" class="btn" type="button" disabled>Pobierz STL</button>
+          <button id="measure-btn" class="btn toggle" type="button" aria-pressed="false">Pomiar</button>
+        </div>
+      </header>
+
+      <main class="workspace">
+        <aside class="panel">
+          <section class="panel-block">
+            <h2>Parametry</h2>
+            <div id="params" class="params">
+              <p class="empty">Ten model nie ma parametrów w formacie Customizera.</p>
+            </div>
+          </section>
+
+          <section class="panel-block">
+            <h2>Geometria</h2>
+            <dl id="stats" class="stats">
+              <div><dt>Wymiary</dt><dd>—</dd></div>
+              <div><dt>Objętość</dt><dd>—</dd></div>
+              <div><dt>Masa (PLA)</dt><dd>—</dd></div>
+              <div><dt>Trójkąty</dt><dd>—</dd></div>
+            </dl>
+          </section>
+        </aside>
+
+        <section class="editor-pane" aria-label="Kod OpenSCAD">
+          <div id="editor"></div>
+        </section>
+
+        <section class="view-pane" aria-label="Podgląd 3D">
+          <div id="viewport"></div>
+          <div id="hint" class="hint"></div>
+          <div id="measure-box" class="measure-box" hidden></div>
+        </section>
+      </main>
+
+      <footer class="statusbar">
+        <span id="status" class="status">Gotowe</span>
+        <button id="log-toggle" class="log-toggle" type="button" hidden>Log</button>
+        <pre id="log" class="log" hidden></pre>
+      </footer>
+    </div>
+
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
