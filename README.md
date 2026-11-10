@@ -2,7 +2,7 @@
 
 OpenSCAD in the browser: edit `.scad`, see the model in 3D, **measure it in millimetres**, export STL. No install, no backend, no account.
 
-[![CI](https://github.com/USER/scadpad/actions/workflows/ci.yml/badge.svg)](https://github.com/USER/scadpad/actions/workflows/ci.yml)
+[![CI](https://github.com/pietrusiewicz/scadpad/actions/workflows/ci.yml/badge.svg)](https://github.com/pietrusiewicz/scadpad/actions/workflows/ci.yml)
 
 ## Why
 
