@@ -33,5 +33,9 @@ export function createEditor(container, { value, onChange, onRender }) {
 
   setTimeout(() => editor.refresh(), 0);
 
+  // CodeMirror mierzy wysokość linii przy starcie; jeśli font doładuje się
+  // później, zawinięte linie rysują się w złym miejscu.
+  document.fonts?.ready.then(() => editor.refresh());
+
   return editor;
 }

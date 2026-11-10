@@ -267,7 +267,9 @@ body {
 }
 
 .CodeMirror {
-  font: 13px/1.55 var(--mono);
+  /* Całkowita wysokość linii: ułamkowa (1.55) rozjeżdża zawijanie w CodeMirror 5 —
+     druga linia akapitu potrafi wylądować na pierwszej. */
+  font: 13px/20px var(--mono);
   color: var(--ink);
   background: #fcfdfe;
 }
