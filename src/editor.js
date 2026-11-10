@@ -19,7 +19,7 @@ export function createEditor(container, { value, onChange, onRender }) {
     lineNumbers: true,
     indentUnit: 4,
     tabSize: 4,
-    lineWrapping: false,
+    lineWrapping: true,
     matchBrackets: true,
     autoCloseBrackets: true,
     viewportMargin: 40,
