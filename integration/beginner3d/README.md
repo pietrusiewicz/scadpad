@@ -34,6 +34,23 @@ Cel: zakładka **Edytor** w nawigacji obok „Modele" i „Sklep", pod adresem
    Skrypt robi `npm run build`, kopiuje `dist/` do `static/scadpad/` i uruchamia
    `collectstatic`. Katalog docelowy zmienisz przez `SITE=...`.
 
+## Kolejność wdrożenia
+
+Kod i szablony siedzą w obrazie kontenera, statyki serwuje nginx z katalogu na
+hoście. Dlatego:
+
+1. `./integration/beginner3d/install.sh` — build, kopiowanie do `static/scadpad/`,
+   `collectstatic`. **Po tym kroku pliki pod `/static/scadpad/` już działają.**
+2. `podman build -t localhost/beginner3d-strona:latest .` w `/opt/beginner3d`.
+3. `systemctl --user restart beginner3d-strona`.
+
+Bez kroków 2–3 `/edytor/` zwróci 404, mimo że assety są pod ręką — obraz ma
+stary `finder/urls.py`.
+
+Build trafia do obrazu przez `COPY . .` (24 MB), choć w środku potrzebny jest
+tylko `index.html` — resztę serwuje nginx. Jeśli kiedyś będzie to bolało, do
+`.containerignore` można dopisać `static/scadpad/assets`.
+
 ## Dlaczego `<base href="/static/scadpad/">`
 
 Build ma względne ścieżki (`./assets/index-abc123.js`), więc leży pod `/static/`,
