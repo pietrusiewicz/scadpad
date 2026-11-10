@@ -114,6 +114,12 @@ body {
   color: #12439c;
 }
 
+.btn.back {
+  margin-right: 4px;
+  color: var(--muted);
+  text-decoration: none;
+}
+
 .btn kbd {
   padding: 1px 4px;
   border-radius: 4px;

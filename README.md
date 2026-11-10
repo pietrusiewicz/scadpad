@@ -107,6 +107,13 @@ npm run build
 
 Behind Django, serve `dist/` from `static/scadpad/` and point one URL at `index.html`; the bundle resolves its assets relatively.
 
+## Integration example
+
+`integration/beginner3d/` is a working example of hosting scadpad inside a Django
+site: one view that serves the built `index.html` with a `<base>` tag, a nav link,
+and an install script that copies `dist/` into the site's static directory. It
+also documents the one CSP directive a WASM app needs (`'wasm-unsafe-eval'`).
+
 ## License
 
 **GPL-3.0-or-later.** The OpenSCAD WASM build (`@loumalouomega/openscad-wasm`) is GPL-3.0-or-later and is bundled into the distributed build, so the combined work carries the same license. That is a consequence of using OpenSCAD's engine, not a choice of the UI code.

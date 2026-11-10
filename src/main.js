@@ -52,6 +52,21 @@ const editor = createEditor(document.getElementById('editor'), {
   onRender: () => render(),
 });
 
+
+// Host pages can inject a "back to the site" link through body attributes, which
+// keeps the embedding CSP-safe (no inline script needed).
+function mountBackLink() {
+  const { backHref, backLabel } = document.body.dataset;
+  if (!backHref) return;
+
+  const link = document.createElement('a');
+  link.className = 'btn back';
+  link.href = backHref;
+  link.textContent = `← ${backLabel || 'Wróć'}`;
+
+  document.querySelector('.toolbar')?.prepend(link);
+}
+
 /* ------------------------------------------------------------------ params */
 
 let syncTimer = null;
@@ -393,6 +408,7 @@ els.fileInput.addEventListener('change', async () => {
   els.fileInput.value = '';
 });
 
+mountBackLink();
 syncParams();
 setStatus('Ładowanie OpenSCAD (24 MB)…', 'busy');
 render();
